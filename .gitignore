@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.apk
+
+# Native build outputs
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+ios/App/build/
+
+# Local and generated files
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+
+# IDE files
+.idea/
+.vscode/

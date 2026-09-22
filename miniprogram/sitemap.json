@@ -1,0 +1,9 @@
+{
+  "desc": "songke miniprogram sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<view class="setup-page">
+  <view class="setup-header"><view class="brand">松</view><view class="header-copy"><text class="brand-name">配置课表</text><text class="brand-en">IMPORT TWO EXCEL FILES</text></view></view>
+  <view class="intro"><text class="eyebrow">课表导入</text><text class="intro-title">两份文件，生成课表</text><text class="intro-note">选择课程详情和排课安排两个 Excel，所有解析都在本机完成。</text></view>
+  <view class="setup-card date-card"><text class="card-label">第一教学周周一</text><picker mode="date" value="{{firstMonday}}" bindchange="onDateChange"><view class="date-picker"><text>{{firstMonday}}</text><text class="picker-arrow">›</text></view></picker></view>
+  <view class="setup-card upload-card"><view class="upload-icon">↑</view><text class="upload-title">上传两个 Excel 文件</text><text class="upload-note">先选课程详情，再选排课安排</text><button class="upload-button" bindtap="chooseExcelFiles" loading="{{loading}}">{{loading ? '正在解析…' : '开始选择文件'}}</button><text wx:if="{{fileNames.length}}" class="file-status">已选择 {{fileNames.length}} / 2 个文件</text><text class="small-note">点击后会连续打开两次文件选择器，分别选择课程详情和排课安排。</text></view>
+  <view class="steps"><view class="step"><text class="step-number">1</text><text>导出课程详情</text></view><view class="step-line"></view><view class="step"><text class="step-number">2</text><text>导出排课安排</text></view><view class="step-line"></view><view class="step"><text class="step-number">3</text><text>选择并生成</text></view></view>
+  <button class="clear-button" bindtap="clearSchedule">清空本机课表</button>
+</view>

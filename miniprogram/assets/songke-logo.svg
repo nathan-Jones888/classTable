@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="128" fill="#b9dcd1"/>
+  <path d="M120 184h272v206H120z" fill="#fffdf7" stroke="#283f40" stroke-width="14"/>
+  <path d="M120 184h272v62H120z" fill="#d8ebe1" stroke="#283f40" stroke-width="14"/>
+  <path d="M176 148v72M336 148v72" stroke="#283f40" stroke-width="22" stroke-linecap="round"/>
+  <text x="256" y="350" fill="#283f40" font-family="Microsoft YaHei, PingFang SC, sans-serif" font-size="164" font-weight="700" text-anchor="middle">松</text>
+  <path d="M350 398c36-26 71-24 99-3M374 423c25-17 49-16 68-3" fill="none" stroke="#e88973" stroke-width="12" stroke-linecap="round"/>
+</svg>

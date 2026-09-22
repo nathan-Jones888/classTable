@@ -1,0 +1,31 @@
+/* Match the Android view: show the whole week without horizontal scrolling. */
+.page { width: 100%; padding: 14rpx 12rpx 24rpx; }
+.topbar { min-width: 0; }
+.brand-copy { min-width: 0; }
+.brand-name, .brand-en { white-space: nowrap; }
+.gear { display: flex; align-items: center; justify-content: center; flex: 0 0 96rpx; width: 96rpx; height: 56rpx; border: 1rpx solid #b9cfc6; border-radius: 16rpx; color: #4d726d; background: #fffdf7; font-size: 19rpx; }
+.hero { padding: 16rpx 0 10rpx; }
+.eyebrow { font-size: 20rpx; }
+.hero-title { white-space: nowrap; margin-top: 3rpx; font-size: 42rpx; line-height: 1.1; }
+.hero-note { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.hero-note { margin-top: 4rpx; font-size: 19rpx; line-height: 1.25; }
+.weekbar { position: relative; display: flex; align-items: center; width: 100%; min-width: 0; min-height: 48rpx; padding-right: 126rpx; box-sizing: border-box; margin-bottom: 12rpx; }
+.week-nav { display: flex; align-items: center; flex: 0 0 220rpx; width: 220rpx; min-width: 220rpx; max-width: 220rpx; gap: 6rpx; }
+.arrow { display: flex; align-items: center; justify-content: center; flex: 0 0 48rpx !important; width: 48rpx !important; min-width: 48rpx; max-width: 48rpx; height: 48rpx; box-sizing: border-box; border: 1rpx solid #b9cfc6; border-radius: 14rpx; color: #4d726d; background: #fffdf7; font-size: 28rpx; line-height: 1; }
+.week-info { flex: 0 0 200rpx; width: 200rpx; min-width: 200rpx; max-width: 200rpx; padding: 0 4rpx; }
+.week-title { display: block; margin: 0 auto; width: 110rpx; max-width: 110rpx; font-size: 28rpx; line-height: 1.2; }.week-range { display: block; margin-top: 2rpx; font-size: 15rpx; }
+.week-title, .week-range { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.today { position: absolute; top: 0; right: 0; display: flex; align-items: center; justify-content: center; flex: none; width: 118rpx !important; min-width: 118rpx; max-width: 118rpx; height: 48rpx; margin: 0; padding: 0; box-sizing: border-box; border: 1rpx solid #c5ded2; border-radius: 14rpx; background: #d8ebe1; color: #4a716a; white-space: nowrap; font-size: 17rpx; }
+.calendar { width: 100%; max-width: 100%; overflow: hidden; justify-content: flex-start; }
+.time-col { flex: 0 0 54rpx; width: 54rpx; }
+.day-col { flex: 1 1 0; width: auto; min-width: 0; }
+.day-head { padding: 0 2rpx; white-space: nowrap; font-size: 18rpx; }.day-date { font-size: 16rpx; }
+.time-cell, .slot { height: 84rpx; }.time-cell { font-size: 13rpx; }.time-num { font-size: 16rpx; }
+.course { left: 2rpx; right: 2rpx; padding: 8rpx 4rpx; border-left-width: 3rpx; border-radius: 8rpx; }
+.course-name, .course-meta { white-space: nowrap; text-overflow: ellipsis; }
+.course-name { display: -webkit-box; overflow: hidden; font-size: 18rpx; line-height: 1.25; white-space: normal; text-overflow: ellipsis; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }.course-time, .course-meta { display: block; overflow: hidden; margin-top: 3rpx; color: #66847b; font-size: 14rpx; white-space: nowrap; text-overflow: ellipsis; }.course-time { color: #527976; font-weight: 600; }
+.footer { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.course.tone-4 { border-color: #d39b63; background: #f3e3c9; }.course.tone-5 { border-color: #76a7a0; background: #d9eee8; }.course.tone-6 { border-color: #9b8fc0; background: #e8e2f3; }.course.tone-7 { border-color: #c68196; background: #f3dfe5; }
+.modal-backdrop { position: fixed; z-index: 20; inset: 0; display: flex; align-items: flex-end; justify-content: center; padding: 24rpx; box-sizing: border-box; background: rgba(40, 63, 64, .32); }
+.course-modal { width: 100%; box-sizing: border-box; padding: 30rpx; border-left: 8rpx solid #69a99d; border-radius: 24rpx 24rpx 16rpx 16rpx; background: #fffdf7; box-shadow: 0 -12rpx 42rpx rgba(40, 63, 64, .2); }.course-modal.tone-1 { border-color: #7d9fc0; }.course-modal.tone-2 { border-color: #c08b9e; }.course-modal.tone-3 { border-color: #b294c0; }.course-modal.tone-4 { border-color: #d39b63; }.course-modal.tone-5 { border-color: #76a7a0; }.course-modal.tone-6 { border-color: #9b8fc0; }.course-modal.tone-7 { border-color: #c68196; }
+.modal-top { display: flex; align-items: center; justify-content: space-between; }.modal-kicker { color: #71958b; font-size: 17rpx; font-weight: 700; letter-spacing: 3rpx; }.course-modal button.modal-close { display: flex; align-items: center; justify-content: center; flex: 0 0 40rpx !important; width: 40rpx !important; min-width: 40rpx; max-width: 40rpx; height: 40rpx; margin: 0 0 0 auto; padding: 0; box-sizing: border-box; border: 1rpx solid #c5ded2; border-radius: 10rpx; color: #58776f; background: #eef5ed; font-size: 25rpx; line-height: 1; }.modal-title { display: block; margin-top: 18rpx; color: #283f40; font-family: serif; font-size: 38rpx; font-weight: 600; line-height: 1.35; }.modal-code { display: block; margin-top: 6rpx; color: #80928a; font-size: 19rpx; }.modal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rpx; margin-top: 24rpx; overflow: hidden; border: 1rpx solid #d8e3da; border-radius: 16rpx; background: #d8e3da; }.modal-grid view { min-height: 82rpx; padding: 16rpx; box-sizing: border-box; background: #fffdf7; }.modal-grid view > text:first-child { display: block; color: #8a9a92; font-size: 17rpx; }.modal-value { display: block; margin-top: 7rpx; color: #304d4b; font-size: 21rpx; font-weight: 600; line-height: 1.35; }

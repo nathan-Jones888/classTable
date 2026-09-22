@@ -1,0 +1,10 @@
+.login-page { display: flex; min-height: 100vh; flex-direction: column; background: #f5f1e8; color: #283f40; }
+.login-header { padding: 34rpx 30rpx 22rpx; }
+.eyebrow { color: #8a9a92; font-size: 18rpx; font-weight: 700; letter-spacing: 4rpx; }
+.login-title { display: block; margin-top: 10rpx; font-family: serif; font-size: 42rpx; font-weight: 600; }
+.login-note { display: block; margin-top: 10rpx; color: #80928a; font-size: 20rpx; line-height: 1.5; }
+.webview { flex: 1; min-height: 900rpx; background: #fffdf7; }
+.login-actions { padding: 22rpx 30rpx 34rpx; background: #f5f1e8; }
+.current-url { display: block; overflow: hidden; margin-bottom: 12rpx; color: #8a9a92; font-size: 17rpx; text-overflow: ellipsis; white-space: nowrap; }
+.primary { width: 100%; margin-top: 10rpx; padding: 22rpx; border-radius: 16rpx; background: #508b7d; color: #fffdf7; font-size: 24rpx; }
+.hint { display: block; margin-top: 12rpx; color: #97a59d; font-size: 18rpx; line-height: 1.6; }
