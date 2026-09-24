@@ -11,7 +11,7 @@ const sections = [
 
 Page({
   data: { semester: getApp().globalData.semester, firstMonday: '2026-08-31', selectedDate: '2026-09-01', week: 1, weekDays: [], labels, sections, courses: [], weekCourseCount: 0, todaySummary: '今日无课', selectedCourse: null },
-  onShow() { this.loadSchedule() },
+  onShow() { this.setData({ selectedDate: formatDate(new Date()) }, () => this.loadSchedule()) },
   loadSchedule() {
     const saved = wx.getStorageSync('songke_schedule') || { firstMonday: '2026-08-31', courses: [] }
     this.setData({ firstMonday: saved.firstMonday, courses: saved.courses || [] }, () => this.renderWeek())
@@ -19,6 +19,7 @@ Page({
   renderWeek() {
     const start = parseDate(this.data.firstMonday)
     const current = parseDate(this.data.selectedDate)
+    const today = formatDate(new Date())
     const week = Math.floor((current - start) / 86400000 / 7) + 1
     const monday = addDays(this.data.firstMonday, (week - 1) * 7)
     const courseKeys = [...new Set(this.data.courses.map((course) => course.code || course.name))]
@@ -26,7 +27,7 @@ Page({
     const weekDays = labels.map((label, index) => {
       const date = addDays(monday, index)
       const courses = this.data.courses.filter((course) => course.weekday === index + 1 && course.weeks.indexOf(week) > -1).map((course) => ({ ...course, classDate: date, startTime: sections[course.startSection - 1]?.time || '', endTime: sections[course.endSection - 1]?.end || '', tone: toneByCourse.get(course.code || course.name) ?? 0, top: (course.startSection - 1) * 84 + (course.startSection > 8 ? 28 : course.startSection > 4 ? 14 : 0) + 6, height: (course.endSection - course.startSection + 1) * 84 - 12 }))
-      return { label, date, shortDate: date.slice(5).replace('-', '/'), selected: date === this.data.selectedDate, courses }
+      return { label, date, shortDate: date.slice(5).replace('-', '/'), selected: date === today, courses }
     })
     const selectedDay = weekDays.find((day) => day.selected)
     this.setData({ week, weekDays, weekCourseCount: weekDays.reduce((sum, day) => sum + day.courses.length, 0), todaySummary: selectedDay && selectedDay.courses.length ? `今日 ${selectedDay.courses.length} 条课程` : '今日无课' })
