@@ -3,7 +3,7 @@
 .topbar { min-width: 0; }
 .brand-copy { min-width: 0; }
 .brand-name, .brand-en { white-space: nowrap; }
-.gear { display: flex; align-items: center; justify-content: center; flex: 0 0 96rpx; width: 96rpx; height: 56rpx; border: 1rpx solid #b9cfc6; border-radius: 16rpx; color: #4d726d; background: #fffdf7; font-size: 19rpx; }
+.gear { display: flex; align-items: center; justify-content: center; flex: 0 0 160rpx; width: 160rpx; height: 58rpx; border: 1rpx solid #a7cbb9; border-radius: 16rpx; color: #365f53; background: #d8ebe1; font-size: 19rpx; font-weight: 600; white-space: nowrap; }
 .hero { padding: 16rpx 0 10rpx; }
 .eyebrow { font-size: 20rpx; }
 .hero-title { white-space: nowrap; margin-top: 3rpx; font-size: 42rpx; line-height: 1.1; }
