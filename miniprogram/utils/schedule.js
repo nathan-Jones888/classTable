@@ -9,6 +9,10 @@ function formatDate(date) {
   return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`
 }
 
+function formatLocalDate(date) {
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
+}
+
 function addDays(value, days) {
   const date = parseDate(value)
   date.setUTCDate(date.getUTCDate() + days)
@@ -107,4 +111,4 @@ function parseScheduleHtml(html) {
   })
 }
 
-module.exports = { addDays, formatDate, parseCourseDetailRows, parseDate, parseExcelRows, parseScheduleHtml, parseScheduleText }
+module.exports = { addDays, formatDate, formatLocalDate, parseCourseDetailRows, parseDate, parseExcelRows, parseScheduleHtml, parseScheduleText }

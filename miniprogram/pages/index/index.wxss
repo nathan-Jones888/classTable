@@ -17,6 +17,8 @@
 .week-title, .week-range { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .today { position: absolute; top: 0; right: 0; display: flex; align-items: center; justify-content: center; flex: none; width: 118rpx !important; min-width: 118rpx; max-width: 118rpx; height: 48rpx; margin: 0; padding: 0; box-sizing: border-box; border: 1rpx solid #c5ded2; border-radius: 14rpx; background: #d8ebe1; color: #4a716a; white-space: nowrap; font-size: 17rpx; }
 .calendar { width: 100%; max-width: 100%; overflow: hidden; justify-content: flex-start; }
+.calendar.page-turn-next, .calendar.page-turn-previous { animation: calendar-week-fade 320ms cubic-bezier(.2, .75, .25, 1) both; transform-origin: center center; }
+@keyframes calendar-week-fade { from { opacity: .2; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
 .time-col { flex: 0 0 54rpx; width: 54rpx; }
 .day-col { flex: 1 1 0; width: auto; min-width: 0; }
 .day-head { padding: 0 2rpx; white-space: nowrap; font-size: 18rpx; }.day-date { font-size: 16rpx; }

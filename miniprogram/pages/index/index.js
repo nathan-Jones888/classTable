@@ -1,4 +1,4 @@
-const { addDays, formatDate, parseDate } = require('../../utils/schedule.js')
+const { addDays, formatLocalDate, parseDate } = require('../../utils/schedule.js')
 
 const labels = ['一', '二', '三', '四', '五', '六', '日']
 const sections = [
@@ -10,16 +10,16 @@ const sections = [
 ]
 
 Page({
-  data: { semester: getApp().globalData.semester, firstMonday: '2026-08-31', selectedDate: '2026-09-01', week: 1, weekDays: [], labels, sections, courses: [], weekCourseCount: 0, todaySummary: '今日无课', selectedCourse: null },
-  onShow() { this.setData({ selectedDate: formatDate(new Date()) }, () => this.loadSchedule()) },
+  data: { semester: getApp().globalData.semester, firstMonday: '2026-08-31', selectedDate: '2026-09-01', week: 1, weekDays: [], labels, sections, courses: [], weekCourseCount: 0, todaySummary: '今日无课', selectedCourse: null, calendarTransition: '' },
+  onShow() { this.setData({ selectedDate: formatLocalDate(new Date()) }, () => this.loadSchedule()) },
   loadSchedule() {
     const saved = wx.getStorageSync('songke_schedule') || { firstMonday: '2026-08-31', courses: [] }
     this.setData({ firstMonday: saved.firstMonday, courses: saved.courses || [] }, () => this.renderWeek())
   },
-  renderWeek() {
+  renderWeek(selectedDate = this.data.selectedDate, calendarTransition = '') {
     const start = parseDate(this.data.firstMonday)
-    const current = parseDate(this.data.selectedDate)
-    const today = formatDate(new Date())
+    const current = parseDate(selectedDate)
+    const today = formatLocalDate(new Date())
     const week = Math.floor((current - start) / 86400000 / 7) + 1
     const monday = addDays(this.data.firstMonday, (week - 1) * 7)
     const courseKeys = [...new Set(this.data.courses.map((course) => course.code || course.name))]
@@ -30,11 +30,29 @@ Page({
       return { label, date, shortDate: date.slice(5).replace('-', '/'), selected: date === today, courses }
     })
     const selectedDay = weekDays.find((day) => day.selected)
-    this.setData({ week, weekDays, weekCourseCount: weekDays.reduce((sum, day) => sum + day.courses.length, 0), todaySummary: selectedDay && selectedDay.courses.length ? `今日 ${selectedDay.courses.length} 条课程` : '今日无课' })
+    this.setData({ selectedDate, calendarTransition, week, weekDays, weekCourseCount: weekDays.reduce((sum, day) => sum + day.courses.length, 0), todaySummary: selectedDay && selectedDay.courses.length ? `今日 ${selectedDay.courses.length} 条课程` : '今日无课' })
   },
-  shiftWeek(amount) { this.setData({ selectedDate: addDays(this.data.selectedDate, amount * 7) }, () => this.renderWeek()) },
+  shiftWeek(amount) {
+    const selectedDate = addDays(this.data.selectedDate, amount * 7)
+    this.setData({ calendarTransition: '' }, () => wx.nextTick(() => this.renderWeek(selectedDate, amount > 0 ? 'page-turn-next' : 'page-turn-previous')))
+  },
   previousWeek() { this.shiftWeek(-1) }, nextWeek() { this.shiftWeek(1) },
-  goToday() { this.setData({ selectedDate: formatDate(new Date()) }, () => this.renderWeek()) },
+  onCalendarTouchStart(event) {
+    const touch = event.touches[0]
+    if (touch) this.calendarTouchStart = { x: touch.clientX, y: touch.clientY }
+  },
+  onCalendarTouchEnd(event) {
+    const start = this.calendarTouchStart
+    const touch = event.changedTouches[0]
+    this.calendarTouchStart = null
+    if (!start || !touch) return
+    const deltaX = touch.clientX - start.x
+    const deltaY = touch.clientY - start.y
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return
+    if (deltaX > 0) this.previousWeek()
+    else this.nextWeek()
+  },
+  goToday() { this.setData({ selectedDate: formatLocalDate(new Date()) }, () => this.renderWeek()) },
   openCourse(event) { this.setData({ selectedCourse: event.currentTarget.dataset.course }) },
   closeCourse() { this.setData({ selectedCourse: null }) },
   noop() {},
